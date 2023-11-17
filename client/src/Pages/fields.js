@@ -33,6 +33,7 @@ const rows = [
 	createData('Marché', 'Basketball', 'clay', 'ifrane', 'bascketball field', '8'),
 	createData('La prairie tenis', 'Tennis', 'clay', 'ifrane', 'tenis field', '7'),
 	createData('Ein vitel', 'Rugby', 'Grass', 'Ein vitel', 'Rugby field', '3'),
+	createData('Pam', 'soccer', 'grass', 'ifrane', 'soccer field', '7'),
 ];
 
 
@@ -74,6 +75,37 @@ function Fields() {
 	return (
 		<>
 			<Navbar />
+		<div className="fields">
+		<div className="FilterContainer">
+				<SearchBar onSearch={handleSearch} value={searchQuery}/>
+				<Filter uniqueSport={uniqueSport} onFilter={handleFilter}/>
+			</div>
+
+			<StyledTableContainerAc component={Paper}>
+				<StyledTable sx={{ minWidth: 700 }} aria-label="customized table">
+					<TableHead>
+						<TableRow>
+							{TableHeaders.map((item) => {
+								return <StyledTableCell align="center">{item}</StyledTableCell>;
+							})}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{filteredRows.map((row, index) => (
+						<StyledTableRow key={index}>
+							<StyledTableCell align="right">{row.name}</StyledTableCell>
+							<StyledTableCell align="right">{row.Sport}</StyledTableCell>
+							<StyledTableCell align="right">{row.SurfaceType}</StyledTableCell>
+							<StyledTableCell align="right">{row.Location}</StyledTableCell>
+							<StyledTableCell align="right">{row.Description}</StyledTableCell>
+							<StyledTableCell align="right">{row.Rating}</StyledTableCell>
+						</StyledTableRow>
+						  ))} 
+					</TableBody>
+				</StyledTable>
+			</StyledTableContainerAc>
+		
+		</div>
 			<div className="FilterContainer">
 				<SearchBar onSearch={handleSearch} value={searchQuery}/>
 				<Filter uniqueSport={uniqueSport} onFilter={handleFilter}/>

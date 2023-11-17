@@ -1,31 +1,72 @@
 .Sportify {
-    color: #fcfcfc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-family: 'Dancing Script', 'Lobster', cursive;
-  }
+  color:  #fcfcfc;;
+}
 
-#header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    height: 10%;
-    background: linear-gradient(to top, #4a4a95, #3d3d7c);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-
-  }
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
 
 
+.nav-menu {
+  background-color:  #3d3d7c;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+  border-radius: 0 2% 2% 0;
+}
 
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
 
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
 
+.nav-text a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
 
+.nav-text a:hover {
+  background-color: #a0a0c0;
+  width: 100%;
+}
 
+.nav-menu-items {
+  width: 100%;
+}
 
+.navbar-toggle {
+  background-color: linear-gradient(to top, #4a4a95, #3d3d7c);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
