@@ -1,12 +1,12 @@
-import expres from "express";
+import express from "express";
+import { loginController, loginFailedController, googlecontroller, googleRedirectCallbackController, logoutController } from "../controllers/auth.js";
 
-const router = expres.Router()
+const router = express.Router();
 
-router.get("/", (req,res)=>{
-    res.send("hello from auth")
-})
+router.get("/login/success", loginController);
+router.get("/login/failed/", loginFailedController);
+router.get("/google/", googlecontroller);
+router.get("/google/callback/", googleRedirectCallbackController); 
+router.get("/logout/", logoutController);
 
-router.get("/register", (req,res)=>{
-    res.send("hello from register")
-})
-export default router 
+export default router;
