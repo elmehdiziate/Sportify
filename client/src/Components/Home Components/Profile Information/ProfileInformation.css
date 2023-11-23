@@ -1,0 +1,55 @@
+.ProfileInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+    border-radius: 5px;
+    text-align: start;
+    width: 400px;
+    margin: 30px 30px 30px 20px;
+}
+
+.title {
+    color: #0345A0;
+    margin: 20px 20px 20px 20px;
+    font-weight: bold;
+}
+
+.labels {
+    margin-left: 20px;
+    align-self: flex-start;
+    color: gray;
+    font-weight: bold;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+.data {
+    margin-left: 30px;
+}
+
+.profile {
+    width: 100px;
+    border-radius: 5%;
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.birthday {
+    margin-left: 45px;
+}

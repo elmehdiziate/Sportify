@@ -1,0 +1,32 @@
+.game-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+.row-game {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+}
+
+.game-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.new-line-game {
+    margin: 5px 20px 15px 20px;
+}
+
+.game-data {
+    color: black;
+    font-size: 15px;
+}
+
+#sport-type {
+    color: black;
+    font-weight: bolder;
+}

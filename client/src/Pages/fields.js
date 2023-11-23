@@ -104,36 +104,7 @@ function Fields() {
 					</TableBody>
 				</StyledTable>
 			</StyledTableContainerAc>
-		
 		</div>
-			<div className="FilterContainer">
-				<SearchBar onSearch={handleSearch} value={searchQuery}/>
-				<Filter uniqueSport={uniqueSport} onFilter={handleFilter}/>
-			</div>
-
-			<StyledTableContainerAc component={Paper}>
-				<StyledTable sx={{ minWidth: 700 }} aria-label="customized table">
-					<TableHead>
-						<TableRow>
-							{TableHeaders.map((item) => {
-								return <StyledTableCell align="center">{item}</StyledTableCell>;
-							})}
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{filteredRows.map((row, index) => (
-						<StyledTableRow key={index}>
-							<StyledTableCell align="right">{row.name}</StyledTableCell>
-							<StyledTableCell align="right">{row.Sport}</StyledTableCell>
-							<StyledTableCell align="right">{row.SurfaceType}</StyledTableCell>
-							<StyledTableCell align="right">{row.Location}</StyledTableCell>
-							<StyledTableCell align="right">{row.Description}</StyledTableCell>
-							<StyledTableCell align="right">{row.Rating}</StyledTableCell>
-						</StyledTableRow>
-						  ))} 
-					</TableBody>
-				</StyledTable>
-			</StyledTableContainerAc>
 		</>
 	);
 }

@@ -1,10 +1,10 @@
 import './App.css';
-import NavBar from './Components/NavBar';
 import Booking from './Pages/Booking';
-import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Session from './Pages/Session';
 import Fields from './Pages/fields';
+import Home from './Pages/Home Page/Home';
+import NavBar from './Components/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavBar /> */}
+         <NavBar />
         <Routes>
           <Route path='/fields' element={<Fields/>} />
           <Route path='/login' element={<Login/>} />
