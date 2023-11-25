@@ -1,0 +1,49 @@
+.game-information {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.row-game {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.game-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.new-line-game {
+    margin: 5px 10px 15px 10px;
+}
+
+.game-data {
+    color: black;
+    font-weight: 450;
+    font-size: 15px;
+
+}
+
+#sport-type {
+    font-weight: bolder;
+}
+
+.col1 {
+    display: flex;
+    width: 22%;
+}
+
+.col2 {
+    display: flex;
+    width: 30%;
+}
+
+.col3 {
+    display: flex;
+    width: 48%;
+}

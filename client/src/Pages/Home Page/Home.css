@@ -1,0 +1,22 @@
+.home {
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: 100vh 35vh;
+    background-color: whitesmoke
+}
+
+.home-content {
+    background-color: whitesmoke;
+    margin: 10px;
+}
+
+.firstrow {
+    display: flex;
+}
+
+.secondrow {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    margin: 40px 38px 30px 20px;
+}
