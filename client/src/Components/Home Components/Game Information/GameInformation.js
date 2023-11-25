@@ -1,8 +1,7 @@
 import React from "react";
 import './GameInformation.css';
-import locationIcon from "../Assets/placeholder.png";
-import dateIcon from "../Assets/calendar.png";
-import timeIcon from "../Assets/clock.png";
+import locationGif from "../Assets/location.gif";
+import dateGif from "../Assets/event.gif";
 
 export default function GameInformation(props){
 
@@ -12,15 +11,19 @@ export default function GameInformation(props){
         <>
             <div className="game-information">
                 <div className="row-game">
-                    <img  className="game-icon" src={sportIcon}/>
-                    <p className="game-data" id="sport-type">{sportType} </p>
-                    <img className="game-icon" src={locationIcon}/>
-                    <p className="game-data">{field}</p>
-                
-                    <img className="game-icon" src={dateIcon}/>
-                    <p className="game-data">{date} </p>
-                    <img className="game-icon" src={timeIcon}/>
-                    <p className="game-data">{time}</p>
+                    <div className="col1">
+                        <img  className="game-icon" src={sportIcon}/>
+                        <p className="game-data" id="sport-type">{sportType} </p>
+                    </div>
+                    <div className="col2">
+                        <img className="game-icon" src={locationGif}/>
+                        <p className="game-data">{field}</p>
+                    </div>
+
+                    <div className="col3">
+                        <img className="game-icon" src={dateGif}/>
+                        <p className="game-data">{date} | {time}</p>
+                    </div>
                 </div>
             </div>
             <hr className="new-line-game"/>

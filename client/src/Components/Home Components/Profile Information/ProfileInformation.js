@@ -1,6 +1,7 @@
 import React from "react";
 import './ProfileInformation.css';
 import defaultProfile from "../Assets/profile.png";
+import profileGif from "../Assets/user-profile.gif";
 
 export default function ProfileInformation(props){
     let {firstName, lastName, profileImage, birthday} = props;
@@ -16,8 +17,11 @@ export default function ProfileInformation(props){
     return(
         <>
             <div className="ProfileInformation">
-                
-                <h5 className="title">Profile Information :</h5>
+
+                <div className="header">
+                    <h5 className="title">Profile Information :</h5>
+                    <img className="profile-icon" src={profileGif } alt="icon" />
+                </div>
 
                 <div className="content">
                     <img className="profile" src={defaultProfile}/>

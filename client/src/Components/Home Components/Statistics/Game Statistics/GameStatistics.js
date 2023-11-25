@@ -11,9 +11,9 @@ export default function GameStatistics(props) {
     return (
         <>
             <div className="game-statistics">
-                <div className="sport-type">
-                    <img className="icon" src={sportIcon} alt="icon" />
+                <div className="header">
                     <h5 className="title">{sportType}</h5>
+                    <img className="icon" src={sportIcon} alt="icon" />
                 </div>
 
                 <div className="played-games">
