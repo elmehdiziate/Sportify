@@ -41,6 +41,7 @@ function Fields() {
 		  const url = `http://localhost:8000/fields/`;
 		  const { data } = await axios.get(url);
 		  setRows(data);
+		  setFilteredRows(data);
 		} catch (err) {
 		  console.log(err);
 		}
