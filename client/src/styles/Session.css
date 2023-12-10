@@ -1,0 +1,38 @@
+.col-md-2{
+    width: 250px;
+  }
+.row{
+    width: 100%;
+  }
+.fa{
+    font-size: 20px;
+    color:grey;
+   
+  }
+.fad{
+    font-size: 15px;
+   
+  }
+.ligne{
+    height: 80px;
+   
+  }
+.hr{
+    border-top: 3px solid rgb(103, 101, 101); 
+  width: 100%; 
+  top: calc(100% + 10px); 
+  left: 0;
+
+   
+  }
+.hrT{
+    border-top: 3px solid rgba(103, 101, 101, 0); 
+  width: 100%; 
+  top: calc(100% + 10px); 
+  left: 0;
+
+   
+  }
+
+
+
