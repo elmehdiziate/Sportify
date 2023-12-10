@@ -57,7 +57,7 @@ export const googleRedirectCallbackController = async (req, res, next) => {
         await User.findOrCreate(user);
 
         console.log("User authenticated successfully.");
-        return res.redirect("/auth/login/success");
+        return res.redirect("http://localhost:3000/home");
       });
     })(req, res, next);
 };
