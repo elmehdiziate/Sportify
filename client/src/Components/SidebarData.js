@@ -1,4 +1,8 @@
 import React from "react";
+import HomeIcon from '@mui/icons-material/Home';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 
 
 export const SidebarData = [
@@ -6,26 +10,28 @@ export const SidebarData = [
   {
     title: "Home",
     path: "/home",
-    // icon: <FaIcons.FaCartPlus color="white" />,
+    icon: <HomeIcon color="white" />,
     cName: "nav-text",
   },
   {
     title: "Fields",
     path: "/fields",
-    // icon: <IoIcons.IoMdPeople color="white" />,
+    icon: <SportsSoccerIcon color="white" />,
     cName: "nav-text",
   },
   {
     title: "booking",
     path: "/booking",
-    // icon: <IoIcons.IoIosPeople color="white" />,
+    icon: <BookmarkAddIcon color="white" />,
     cName: "nav-text",
   },
   {
     title: "Session",
     path: "/session",
-    // icon: <FaIcons.FaStore color="white"/>,
+    icon: <AssessmentIcon color="white" />,
     cName: "nav-text",
   },
+
+
 
 ];

@@ -1,11 +1,14 @@
 import './App.css';
 import Booking from './Pages/Booking';
-import Login from './Pages/Login';
+import Login from './Pages/Login/Login';
 import Session from './Pages/Session';
 import Fields from './Pages/fields';
 import Home from './Pages/Home Page/Home';
+import Signup from './Pages/Signup/Signup';
 import NavBar from './Components/NavBar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 
@@ -29,7 +32,7 @@ function App() {
   return (
     <div className="container">
       <Router>
-         <NavBar />
+      {user && <NavBar />}
         <Routes>
           <Route
             exact
@@ -45,6 +48,10 @@ function App() {
             path="/signup"
             element={user ? <Navigate to="/" /> : <Signup />}
           />
+          <Route path="/fields" element={<Fields />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/session" element={<Session />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Router>
     </div>

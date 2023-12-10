@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../styles/NavBar.css";
 import { IconContext } from "react-icons";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from "@mui/material";
+
 
 function NavBar() {
+  const Navigate = useNavigate();
+  const handleLogOut = async () => {
+    Navigate("/");
+  };
+  
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -18,12 +26,18 @@ function NavBar() {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
-                    {/* {item.icon} */}
+                    {item.icon}
                     <span>{item.title}</span>
                   </Link>
                 </li>
               );
             })}
+            <li className="button">
+            <Button onClick={handleLogOut} style={{ color: "#ffffff" }}>
+							<LogoutIcon color="white" />
+							<span> Sign Out</span>
+						</Button>
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>

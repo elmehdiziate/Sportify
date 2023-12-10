@@ -14,6 +14,7 @@ import Filter from "../Components/Filter";
 import "../styles/fields.css";
 import SearchBar from "../Components/searchBar";
 import { useState } from "react";
+import axios from "axios";
 
 const TableHeaders = [
 	"Field Name",
@@ -21,35 +22,41 @@ const TableHeaders = [
 	"Surface Type",
 	"Location",
 	"Description",
+	"Contact info",
 	"Rating",
 ];
 
-function createData(name, Sport, SurfaceType, Location, Description, Rating) {
-	return { name, Sport, SurfaceType, Location, Description, Rating };
-  }
 
-const rows = [
-	createData("la prairie", "soccer", "grass", "ifrane", "soccer field ", "5"),
-	createData('Marché', 'Basketball', 'clay', 'ifrane', 'bascketball field', '8'),
-	createData('La prairie tenis', 'Tennis', 'clay', 'ifrane', 'tenis field', '7'),
-	createData('Ein vitel', 'Rugby', 'Grass', 'Ein vitel', 'Rugby field', '3'),
-	createData('Pam', 'soccer', 'grass', 'ifrane', 'soccer field', '7'),
-];
+
+
 
 
 function Fields() {
-	// const [rows, setRows] = useState([]);
+	const [rows, setRows] = useState([]);
 	const [filteredRows, setFilteredRows] = useState(rows);	
 	const [selectedSport, setSelectedSport] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
+	const getField = async () => {
+		try {
+		  const url = `http://localhost:8000/fields/`;
+		  const { data } = await axios.get(url);
+		  setRows(data);
+		} catch (err) {
+		  console.log(err);
+		}
+	  };
+	
+	  useEffect(() => {
+		getField();
+	  }, []);
 
-	const uniqueSport = [...new Set(rows.map((item) => item.Sport))];
+	const uniqueSport = [...new Set(rows.map((item) => item.sport))];
 
 	const handleFilter = (selectedSport) => {
 		setSelectedSport(selectedSport);
 		const filteredData = rows.filter((row) => {
 		  const matchesSport =
-			selectedSport === "" || row.Sport === selectedSport;
+			selectedSport === "" || row.sport === selectedSport;
 		  const matchesSearch =
 			row.name.toLowerCase().includes(searchQuery.toLowerCase());
 		  return matchesSport;
@@ -94,11 +101,13 @@ function Fields() {
 						{filteredRows.map((row, index) => (
 						<StyledTableRow key={index}>
 							<StyledTableCell align="right">{row.name}</StyledTableCell>
-							<StyledTableCell align="right">{row.Sport}</StyledTableCell>
-							<StyledTableCell align="right">{row.SurfaceType}</StyledTableCell>
-							<StyledTableCell align="right">{row.Location}</StyledTableCell>
-							<StyledTableCell align="right">{row.Description}</StyledTableCell>
-							<StyledTableCell align="right">{row.Rating}</StyledTableCell>
+							<StyledTableCell align="right">{row.sport}</StyledTableCell>
+							<StyledTableCell align="right">{row.surfaceType}</StyledTableCell>
+							<StyledTableCell align="right">{row.location.city}</StyledTableCell>
+							<StyledTableCell align="right">{row.description}</StyledTableCell>
+							<StyledTableCell align="right">{row.bookingInfo.contactEmail}</StyledTableCell>
+							<StyledTableCell align="right">{row.rating}</StyledTableCell>
+							
 						</StyledTableRow>
 						  ))} 
 					</TableBody>
