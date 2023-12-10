@@ -1,7 +1,7 @@
 import "./App.css";
 import Booking from "./Pages/Booking";
 import Login from "./Pages/Login/Login";
-import {Session} from "./Pages/Session";
+import Session from "./Pages/Session";
 import Fields from "./Pages/fields";
 import Home from "./Pages/Home Page/Home";
 import Signup from "./Pages/Signup/Signup";
