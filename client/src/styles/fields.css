@@ -8,6 +8,7 @@
 .Search{
     width: 70%;
     height: 60%;
+    display: flex;
 }
 .FilterContainer {
     display: flex;
