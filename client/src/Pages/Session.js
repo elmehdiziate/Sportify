@@ -1,104 +1,68 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "../styles/Session.css";
-import 'font-awesome/css/font-awesome.min.css';
+import React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import '../styles/Session.css'; // Import the CSS file
 import NavBar from "../Components/NavBar";
 
 
-export const Session = () => {
-return (
+function Session() {
+    const rows = [
+        { date: '18/11/2023', startTime: '00:00', endTime: '01:00', field: 'Field data' },
+        { date: '18/11/2023', startTime: '00:00', endTime: '01:00', field: 'Field data' },
+        { date: '18/11/2023', startTime: '00:00', endTime: '01:00', field: 'Field data' },
+        { date: '18/11/2023', startTime: '00:00', endTime: '01:00', field: 'Field data' },
+        
+    ];
 
-<div>
-    <div width="100%" className="bg-white" >
-    <div className="row">
-        <div className="col-md-2 ">
-        {/*<NavBar/>*/}
-
-
+    return (
+        <div className="pageLayout">
+            <div className="navBar">
+                <NavBar/>
+            </div>
+            <div className="contentArea">
+                <div className="Session">
+                    <TableContainer component={Paper} className="tableContainer">
+                        <Table className="table" aria-label="simple table">
+                            <TableHead className="tableHead">
+                                <TableRow>
+                                    <TableCell>Action</TableCell>
+                                    <TableCell>Date</TableCell>
+                                    <TableCell>Start Time</TableCell>
+                                    <TableCell>End Time</TableCell>
+                                    <TableCell>Field</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map((row, index) => (
+                                    <TableRow
+                                        key={index}
+                                        className="tableRow"
+                                    >
+                                        <TableCell component="th" scope="row" className="tableCell">
+                                            <IconButton aria-label="actions" className="iconButton">
+                                                <MoreHorizIcon className="actionIcon" />
+                                            </IconButton>
+                                        </TableCell>
+                                        <TableCell className="tableCell">{row.date}</TableCell>
+                                        <TableCell className="tableCell">{row.startTime}</TableCell>
+                                        <TableCell className="tableCell">{row.endTime}</TableCell>
+                                        <TableCell className="tableCell">{row.field}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
+            </div>
         </div>
-        <div className="col-md-10 ">
-            <table className="table rounded">
-                <thead >
-                    <tr className="ligne ">
-                <th>Action <hr className="hrT"/></th>
-                
-                <th>Date <hr className="hr"/></th>
-                <th>Start Time <hr className="hr"/></th>
-                <th>End Time <hr className="hr"/></th>
-                <th>Field <hr className="hr"/></th>
-                </tr>
-                </thead>
-                <tbody >
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                    <tr className="ligne">
-                <td ><a href=""><i class="fa fa-ellipsis-h" ></i></a></td>
-                <td><span className="fad">18/11/2023</span></td>
-                <td><span className="fad">00:00</span></td>
-                <td><span className="fad">01:00</span></td>
-                <td><span className="fad">Field data</span></td>
-                </tr>
-                
-                </tbody>
-            </table>
-        </div>
-    </div> 
-    </div>
-</div>
+    );
+}
 
-
-
-)
-
-
-
-
-};
+export default Session;
