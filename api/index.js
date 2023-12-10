@@ -7,6 +7,7 @@ import fieldsrouter from "./routes/fields.js"
 import cors from "cors"
 import passport from "passport";
 import cookieSession from "cookie-session";
+import bookingrouter from "./routes/booking.js"
 import passportSetup from "./passport.js";
 
 const app = express();
@@ -64,7 +65,7 @@ app.use(express.json())
 app.use("/auth", authrouter)
 app.use("/users", usersrouter)
 app.use("/fields", fieldsrouter)
-
+app.use("/booking", bookingrouter)
 
 
 app.listen(8000, () =>{
