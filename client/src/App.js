@@ -67,7 +67,7 @@ function App() {
 					<Route 
           exact
           path="/session" 
-          element={user ? <Navigate to="/" /> :<Session />} />
+          element={user ? <Navigate to="/" /> :<Session/>} />
 					<Route 
           exact
           path="/home" 
