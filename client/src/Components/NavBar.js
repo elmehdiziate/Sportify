@@ -10,7 +10,13 @@ import { Button } from "@mui/material";
 function NavBar() {
   const Navigate = useNavigate();
   const handleLogOut = async () => {
-    Navigate("/");
+    // Make an HTTP request to the logout endpoint
+    try {
+      await fetch('http://localhost:8000/auth/logout/', { method: 'GET' });
+      Navigate('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
   
   return (
