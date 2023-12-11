@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import "../styles/Booking.css";
 import axios from "axios";
+// import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 const style = {
 	position: "absolute",
@@ -88,7 +89,7 @@ export default function AddBookingModel({
 					<h1 style={{ marginBottom: 20 }}>Add a Booking</h1>
 					<TextField
 						id="outlined-basic"
-						label="field"
+						label="Team Name"
 						variant="outlined"
 						value={field}
 						onChange={(e) => {
@@ -98,8 +99,9 @@ export default function AddBookingModel({
 					<br></br>
 					<TextField
 						id="outlined-basic"
-						label="user"
+						label="User"
 						variant="outlined"
+
 						value={user}
 						onChange={(e) => {
 							setUser(e.target.value);
@@ -109,7 +111,7 @@ export default function AddBookingModel({
 
 					<TextField
 						id="outlined-basic"
-						label="date"
+						label="Date"
 						variant="outlined"
 						value={date}
 						onChange={(e) => {
@@ -120,7 +122,7 @@ export default function AddBookingModel({
 
 					<TextField
 						id="outlined-basic"
-						label="starttime"
+						label="Start Time"
 						variant="outlined"
 						value={starttime}
 						onChange={(e) => {
@@ -131,13 +133,14 @@ export default function AddBookingModel({
 
 					<TextField
 						id="outlined-basic"
-						label="endtime"
+						label="End Time"
 						variant="outlined"
 						value={endtime}
 						onChange={(e) => {
 							setEndtime(e.target.value);
 						}}
 					/>
+					{/* <TimePicker label="Basic time picker" /> */}
 					<br></br>
 
 					<div className="ModalButtons">

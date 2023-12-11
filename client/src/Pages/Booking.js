@@ -15,21 +15,20 @@ export default function Booking() {
 	const [open, setOpen] = useState(false);
 
 	  const handleDateSelect = (selectInfo) => {
-		
-		let title = prompt('Please enter a new title for your event')
+		setOpen(true);
+		// let title = prompt('Please enter a new title for your event')
 		let calendarApi = selectInfo.view.calendar
 	
 		calendarApi.unselect() // clear date selection
 	
-		if (title) {
+		if (true) {
 		  calendarApi.addEvent({
 			id: 1234,
-			title,
 			start: selectInfo.startStr,
 			end: selectInfo.endStr,
 		  })
 		}
-		setOpen(true);
+		// setOpen(true);
 	  }
 	
 	  const handleEventClick = (clickInfo) => {
