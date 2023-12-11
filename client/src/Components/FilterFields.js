@@ -16,11 +16,9 @@ function FilterFields({uniqueField, onFilter}) {
 
 	return (
 		<>
-			<FormControl className="Filter" sx={{ m: 1, minWidth: 300}}>
+			<FormControl className="Filter" sx={{ m: 1, minWidth: 520}}>
 				<InputLabel id="demo-simple-select-helper-label">Field</InputLabel>
 				<Select
-					labelId="demo-simple-select-helper-label"
-					id="demo-simple-select-helper"
 					value={field}
 					label="Field"
 					onChange={handleChange}
@@ -29,7 +27,7 @@ function FilterFields({uniqueField, onFilter}) {
 						<em>None</em>
 					</MenuItem>
 					{uniqueField.map((field) => (
-						<MenuItem key={field.name} value={field.name}>
+						<MenuItem key={field.name} value={field._id}>
 							{field.name}
 						</MenuItem>
 					))}

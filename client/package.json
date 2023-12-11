@@ -10,6 +10,8 @@
     "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/react": "^6.1.10",
     "@fullcalendar/timegrid": "^6.1.10",
+    "@mui/x-date-pickers": "latest",
+    "dayjs": "latest",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.14.20",
     "@mui/styled-engine": "^5.13.2",

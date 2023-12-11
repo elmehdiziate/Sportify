@@ -22,10 +22,18 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    teamName: {
+        type: String,
+        required: true,
+    },
     status: {
         type: String,
         enum: ["Pending", "Approved", "Rejected"],
         default: "Pending",
+        required: true,
+    },
+    players: {
+        type: Number,
         required: true,
     },
 });

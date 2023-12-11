@@ -5,7 +5,11 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import "../styles/Booking.css";
 import axios from "axios";
-// import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { TimeField } from "@mui/x-date-pickers/TimeField";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateField } from "@mui/x-date-pickers/DateField";
+import FilterFields from "../Components/FilterFields";
 
 const style = {
 	position: "absolute",
@@ -23,15 +27,17 @@ export default function AddBookingModel({
 	handleError,
 	open,
 	handleSubmit,
-    
 }) {
 	//vars
+	const [field, setField] = useState("");
+	const [fields, setFields] = useState([]);
 	const [user, setUser] = useState();
-	const [field, setfield] = useState();
 	const [status, setStatus] = useState();
 	const [starttime, setStarttime] = useState();
 	const [endtime, setEndtime] = useState();
 	const [date, setDate] = useState();
+	const [players, setPlayers] = useState(0);
+	const [teamName, setTeamName] = useState("");
 	//   const [submit, setSubmit] = useState(false);
 
 	const handleClose = () => {
@@ -41,32 +47,56 @@ export default function AddBookingModel({
 
 	const resetData = () => {
 		setUser();
-		setfield();
 		setEndtime();
 		setStarttime();
 		setDate();
 		setStatus();
+		setPlayers(0);
+		setTeamName("");
+		setField("");
 	};
+	const handleFilter =  (Field) => {
+		setField(Field);
+		console.log(field);
+   };
 
-	useEffect(() => {}, []);
+
+   const getField = async () => {
+	   try {
+		   const url = `http://localhost:8000/fields/`;
+		   const { data } = await axios.get(url);
+		   setFields(data);
+	   } catch (err) {
+		   console.log(err);
+	   }
+   };
+
+	useEffect(() => {
+		getField();
+	}, []);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+		console.log("submit");
 		try {
+			
+			const userrequest = await axios.get(
+				"http://localhost:8000/auth/login/success", {withCredentials: true}
+			);
+			const userId = userrequest.data.user._id;
 			const body = {
-				user,
-				field,
-				status,
-				starttime,
-				endtime,
-				date,
+				user: userId,
+				field: field,
+				status: "Pending",
+				starttime: starttime.toISOString(),
+				endtime: endtime.toISOString(),
+				date: date.toISOString(),
+				teamName,
+				players,
+
 			};
+			console.log(userrequest);
 			console.log(body);
-            // const req= await axios.get("http://localhost:8000/auth/login/success");
-            // console.log(req);
-            const userrequest = await axios.get("http://localhost:8000/users/current");
-            
-            console.log(userrequest);
 			const responce = await axios.post("http://localhost:8000/booking", body);
 			console.log(responce);
 			handleSuccess();
@@ -87,60 +117,72 @@ export default function AddBookingModel({
 			>
 				<Box className={"modalStyle"} sx={style}>
 					<h1 style={{ marginBottom: 20 }}>Add a Booking</h1>
+					<FilterFields uniqueField={fields} onFilter={handleFilter} />
+					<br/>
 					<TextField
 						id="outlined-basic"
 						label="Team Name"
 						variant="outlined"
-						value={field}
+						value={teamName}
 						onChange={(e) => {
-							setfield(e.target.value);
+							setTeamName(e.target.value);
 						}}
 					/>
 					<br></br>
 					<TextField
 						id="outlined-basic"
-						label="User"
+						label="Number of Players"
 						variant="outlined"
-
-						value={user}
+						value={players}
+						type="number"
 						onChange={(e) => {
-							setUser(e.target.value);
+							setPlayers(e.target.value);
 						}}
 					/>
 					<br></br>
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<DateField
+							label="Date"
+							value={date}
+							onChange={(value) => setDate(value)}
+							format="MM-DD-YYYY"
+						/>
+					</LocalizationProvider>
 
-					<TextField
-						id="outlined-basic"
-						label="Date"
-						variant="outlined"
-						value={date}
-						onChange={(e) => {
-							setDate(e.target.value);
-						}}
-					/>
-					<br></br>
+					<br />
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<TimeField
+							label="Start Time"
+							value={starttime}
+							ampm={false}
+							masks={{ hours: "HH", minutes: "mm" }}
+							onChange={(value) => {
+								setStarttime(value);
+							}}
+						/>
+					</LocalizationProvider>
 
-					<TextField
-						id="outlined-basic"
-						label="Start Time"
-						variant="outlined"
-						value={starttime}
-						onChange={(e) => {
-							setStarttime(e.target.value);
-						}}
-					/>
-					<br></br>
-
-					<TextField
+					<br />
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<TimeField
+							label="End Time"
+							value={endtime}
+							onChange={(value) => {
+								setEndtime(value);
+							}}
+						/>
+					</LocalizationProvider>
+					<br />
+					{/* <TextField
 						id="outlined-basic"
 						label="End Time"
 						variant="outlined"
 						value={endtime}
 						onChange={(e) => {
-							setEndtime(e.target.value);
+							setEndtime(e);
 						}}
-					/>
-					{/* <TimePicker label="Basic time picker" /> */}
+					/> */}
+
 					<br></br>
 
 					<div className="ModalButtons">
