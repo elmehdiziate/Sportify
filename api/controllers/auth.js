@@ -3,13 +3,19 @@ import User from "../models/user.js";
 
 export const loginController = async (req, res) => {
   if (req.user) {
-    res.status(200).json({
-      success: true,
-      message: "User has successfully authenticated",
-      user: req.user,
-      cookies: req.cookies,
-      error: false,
-    });
+    try {
+      const user = await User.findOrCreate(req.user);
+      res.status(200).json({
+        success: true,
+        message: "User has successfully authenticated",
+        user: user, 
+        googleinfo: req.user,
+        cookies: req.cookies,
+        error: false,
+      });
+    } catch (error) {
+      res.status(500).json({ error: true, message: "Database error" });
+    }
   } else {
     res.status(403).json({ error: true, message: "Not Authorized" });
   }
@@ -23,7 +29,8 @@ export const loginFailedController = async (req, res) => {
 }
 
 export const googlecontroller = async (req, res, next) => {
-    passport.authenticate("google", { scope: ["profile", "email"] })(req, res, next);
+  // Force the user to select an account each time they log in
+  passport.authenticate("google", { scope: ["profile", "email"], prompt: 'select_account' })(req, res, next);
 }
 
 export const googleRedirectController = passport.authenticate("google", {
@@ -65,7 +72,8 @@ export const googleRedirectCallbackController = async (req, res, next) => {
   
 
 export const logoutController = async (req, res) => {
+    console.log("logout controller")
     req.logout();
+    res.clearCookie('connect.sid');
     res.redirect("http://localhost:3000");
 }
-
