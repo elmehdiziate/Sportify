@@ -63,3 +63,20 @@
   flex-grow: 1; /* Allows the content area to take up the remaining space */
   overflow-y: auto; /* Allows scrolling if the table is taller than the viewport */
 }
+
+
+/* Styles for the menu */
+#simple-menu {
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for menu items */
+.MuiMenuItem-root {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #e0e0e0;
+}

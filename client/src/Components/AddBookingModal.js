@@ -61,11 +61,11 @@ export default function AddBookingModel({
 				date,
 			};
 			console.log(body);
-            const req= await axios.get("http://localhost:8000/auth/login/");
-            console.log(req);
-            // const userrequest = await axios.get("http://localhost:8000/users/current");
+            // const req= await axios.get("http://localhost:8000/auth/login/success");
+            // console.log(req);
+            const userrequest = await axios.get("http://localhost:8000/users/current");
             
-            // console.log(userrequest);
+            console.log(userrequest);
 			const responce = await axios.post("http://localhost:8000/booking", body);
 			console.log(responce);
 			handleSuccess();
