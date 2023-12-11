@@ -1,6 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Signup.module.css'
+import '../Login/Login.css'
+import { Button } from '@mui/material';
+import LockPersonIcon from "@mui/icons-material/LockPerson";
+
+
+
 function Signup() {
 
   const googleAuth = () => {
@@ -11,29 +17,39 @@ function Signup() {
 	};
   
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Sportify</h1>
-      <div className={styles.formContainer}>
-        <div className={styles.left}>
-          <img className={styles.img} src="/../../public/images/signup.jpg" alt="signup" />
+    
+    <div className="LoginPage">
+    <div className="Logincontainer">
+      <LockPersonIcon className="custom-icon" />
+      <h2 className="Header">Sign up to your account</h2>
+
+      <div>
+        <hr />
+        <div className="Button">
+        <Button
+          variant="contained"
+          onClick={googleAuth}
+          style={{ background: '#3d3d7c' }}
+          
+        >
+          <img src="./images/google.png" alt="google icon" className='img'/>
+          <p class="TextButton">Sign up with Google</p>
+        </Button>
         </div>
-        <div className={styles.right}>
-          <h2 className={styles.subHeading}>Creat a new Account</h2>
-          <input type="text" className={styles.input} placeholder="Username" />
-          <input type="text" className={styles.input} placeholder="Email" />
-          <input type="text" className={styles.input} placeholder="Password" />
-          <button className={styles.btn}>Sign Up</button>
-          <p className={styles.text}>Or</p>
-          <button className={styles.google_btn} onClick={googleAuth}>
-            <img src="./images/google.png" alt="google icon" />
-            <span>Sign Up with Google</span>
-          </button>
-          <p className={styles.text}>
-            Already have account? <Link to="/login">Log in</Link>
-          </p>
+        <hr />
+        <div className="Text">
+          <p className="Text">Already have an Account</p>
+          <Link to="/login" className='signup'>Log in</Link>
         </div>
+        
       </div>
     </div>
+    <div className="Right">
+    <img src="./images/Sportify.png" alt="Logo" />
+    </div>
+    <div />
+  </div>
+
   )
 }
 
