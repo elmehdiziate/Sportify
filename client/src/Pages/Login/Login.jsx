@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from './Login.module.css'
-
+import './Login.css'
+import Button from '@mui/material/Button';
+import LockPersonIcon from "@mui/icons-material/LockPerson";
 
 function Login() {
 
@@ -13,28 +14,42 @@ function Login() {
 	};
   
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Sportify</h1>
-      <div className={styles.formContainer}>
-        <div className={styles.left}>
-          <img className={styles.img} src="../../../public/images/login.jpg" alt="login" />
-        </div>
-        <div className={styles.right}>
-          <h2 className={styles.subHeading}>Members Login</h2>
-          <input type="text" className={styles.input} placeholder="Email" />
-          <input type="text" className={styles.input} placeholder="Password" />
-          <button className={styles.btn}>Log In</button>
-          <p className={styles.text}>Or</p>
-          <button className={styles.google_btn} onClick={googleAuth}>
-            <img src="./images/google.png" alt="google icon" />
-            <span>Sign in with Google</span>
-          </button>
-          <p className={styles.text}>
-            New Here ? <Link to="/signup">Sign Up</Link>
-          </p>
-        </div>
-      </div>
-    </div>
+	
+	<div className="LoginPage">
+			<div className="Logincontainer">
+				<LockPersonIcon className="custom-icon" />
+				<h2 className="Header">Sign in to your account</h2>
+
+				<div>
+					<hr />
+					<div className="Button">
+					<Button
+						variant="contained"
+						onClick={googleAuth}
+						style={{ background: '#3d3d7c' }}
+						
+					>
+						<img src="./images/google.png" alt="google icon" className='img'/>
+						<p class="TextButton">Login with Google</p>
+					</Button>
+					</div>
+					<hr />
+					<div className="Text">
+						<p className="Text">Don't have an account?</p>
+						<Link to="/signup" className='signup'>Sign Up</Link>
+					</div>
+					
+				</div>
+			</div>
+			<div className="Right">
+			<img src="./images/Sportify.png" alt="Logo" />
+			</div>
+			<div />
+		</div>
+
+
+
+
   )
 }
 

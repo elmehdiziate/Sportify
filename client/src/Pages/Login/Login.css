@@ -1,0 +1,102 @@
+.LoginPage{
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #f9f9f9, #3d3d7c); 
+    margin: 0% -4.5%;
+    padding: 0%;
+    overflow: hidden;
+}
+.Header{
+  margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: #1a202c;
+  }
+  .Button {
+   
+    border-radius: 15px;
+    height: 50px;
+    width: 300px;
+    display: flex; /* Added */
+    align-items: center;
+    justify-content: center;
+    background:  #3d3d7c;
+  }
+
+  
+  .imageStyle {
+    width: 40%;  
+    height: 40%; 
+  }
+  .Right{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:60%;
+    margin-right: -25%;
+
+}
+.custom-icon {
+  height: 30px;
+  width: 30px;
+  color: black;
+}
+
+.Logincontainer{
+  display: flex;
+  flex-direction: column;
+  padding-left: 12%;
+  width: 40%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  max-width: 450px;
+  margin: auto;
+}
+
+.Logincontainer, .Right {
+  flex: 1;
+  display: flex;
+  height: 100vh;
+
+}
+.TextButton{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+  margin: 2%;
+}
+.img {
+  width: 12%;
+
+}
+
+
+
+.Text {
+  font-size: 16px;
+  color: black;
+  margin: 5px 3px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.signup{
+  margin-left: 2%;
+  color: #404087;
+}
