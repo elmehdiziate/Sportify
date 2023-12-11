@@ -93,7 +93,7 @@ export const deleteBooking = async (req, res) => {
 
 export const getBookingsByUser = async (req, res) => {
     try {
-        const bookings = await Booking.find({ user: req.params.id });
+        const bookings = await Booking.find({ user: req.user.id });
         res.json(bookings);
     } catch (error) {
         res.status(500).json({ message: error.message });
