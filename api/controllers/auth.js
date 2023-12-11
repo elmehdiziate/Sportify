@@ -34,7 +34,7 @@ export const googlecontroller = async (req, res, next) => {
 }
 
 export const googleRedirectController = passport.authenticate("google", {
-    successRedirect: "/auth/login/success",
+    successRedirect: "http://localhost:3000/home",
     failureRedirect: "/auth/login/failed",
 });
 
