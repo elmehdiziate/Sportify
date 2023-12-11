@@ -7,6 +7,7 @@
     font-size: 100%;
     margin-left: 38vh;
     margin-top: 2%;
+    padding: 0%;
 }
 
 /* Improved styles for the FullCalendar container */
@@ -15,7 +16,9 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     border-radius: 10px; /* Rounded corners for a modern look */
     overflow: hidden; /* Ensures the shadow and border radius applies nicely */
-    transition: box-shadow 0.3s; /* Smooth transition for hover effects */
+    transition: box-shadow 0.3s; 
+    margin-top: -25%;
+    padding: 0%;
 }
 
 /* Enhanced styles for the FullCalendar buttons */
@@ -94,3 +97,14 @@
    color:#fff;
 }
 
+.modalStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 10px 0;
+    max-height: 100;
+    width: 50; 
+  }
+  
