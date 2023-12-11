@@ -22,7 +22,7 @@ export const getBookings = async (req, res) => {
 
 
 export const createBooking = async (req, res) => {
-    const { field, user, date, starttime, endtime, status } = req.body;
+    const { field, user, date, starttime, endtime, status, teamName, players } = req.body;
 
     try {
         // Check for existing booking with overlapping time for the same field
@@ -42,7 +42,7 @@ export const createBooking = async (req, res) => {
         }
 
         // Create the new booking if no overlap is found
-        const booking = new Booking({ field, user, date, starttime, endtime, status });
+        const booking = new Booking({ field, user, date, starttime, endtime, status, teamName, players });
         const newBooking = await booking.save();
         res.status(201).json(newBooking);
     } catch (error) {
