@@ -18,3 +18,13 @@ export const getAllUsers = async (req,res,next) =>{
         res.status(500).json(err)
     }
 }
+
+export const getCurrentUser = async (req,res,next) =>{
+    console.log("Hi I am a get current route")
+    try{
+        const Users = await User.findById(req.user._id);
+        res.status(200).json(Users)
+    }catch{
+        res.status(500).json(err)
+    }
+}
