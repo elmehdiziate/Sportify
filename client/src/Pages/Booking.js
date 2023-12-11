@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import NavBar from "../Components/NavBar";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "../styles/Booking.css";
-
-import axios from "axios";
 import AddBookingModel from "../Components/AddBookingModal";
 
 export default function Booking() {
