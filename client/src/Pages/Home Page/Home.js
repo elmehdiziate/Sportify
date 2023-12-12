@@ -27,7 +27,6 @@ export default function Home() {
 		  console.error("walo");
 		}
 	  };
-  
 	  fetchData();
 	}, []);
 	return (
