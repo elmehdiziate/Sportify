@@ -102,14 +102,12 @@ export default function Booking() {
 				open={open}
 				handleSubmit={setOpen}
 			/>
-			<div>
-
-			</div>
-			<div className="BookingCalendar">
+			<div className="filter">
 			<FilterFields 
 				uniqueField={fields} onFilter={handleFilter}
 			/>
-			
+			</div>
+			<div className="BookingCalendar">
 				<FullCalendar
 					plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 					className="fc"

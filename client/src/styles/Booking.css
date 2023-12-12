@@ -107,4 +107,15 @@
     max-height: 100;
     width: 50; 
   }
-  
+.filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 10px 0;
+    max-height: 100;
+    width: 50; 
+    margin-right: 5% ;
+}
