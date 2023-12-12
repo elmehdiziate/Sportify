@@ -1,6 +1,6 @@
 import expres from "express";
 
-import { getAllUsers, getCurrentUser} from "../controllers/users.js";
+import { getAllUsers, getUser, updateUser} from "../controllers/users.js";
 const router = expres.Router();
 
 // //get
@@ -8,6 +8,8 @@ const router = expres.Router();
 //get all
 router.get("/", getAllUsers);
 
-router.get("/current", getCurrentUser);
+router.get("/:id", getUser);
+
+router.patch("/:id", updateUser);
 
 export default router;
