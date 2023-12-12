@@ -3,7 +3,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-
+import PaymentIcon from '@mui/icons-material/Payment';
 
 export const SidebarData = [
  
@@ -31,6 +31,13 @@ export const SidebarData = [
     icon: <AssessmentIcon color="white" />,
     cName: "nav-text",
   },
+  {
+    title: "Payment",
+    path: "/Payment",
+    icon: <PaymentIcon color="white" />,
+    cName: "nav-text",
+  },
+
 
 
 

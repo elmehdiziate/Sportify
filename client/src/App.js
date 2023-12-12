@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Payment from "./Pages/Payment";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -60,7 +61,12 @@ function App() {
 						element={user ? <Navigate to="/" /> : <Fields />}
 					/>
 					<Route
-            exact
+						exact
+						path="/Payment"
+						element={user ? <Navigate to="/" /> : <Payment/>}
+					/>
+					<Route
+            			exact
 						path="/booking"
 						element={user ? <Navigate to="/" /> : <Booking />}
 					/>
