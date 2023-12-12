@@ -60,18 +60,20 @@ function App() {
 						element={user ? <Navigate to="/" /> : <Fields />}
 					/>
 					<Route
-            exact
+						exact
 						path="/booking"
 						element={user ? <Navigate to="/" /> : <Booking />}
 					/>
-					<Route 
-          exact
-          path="/session" 
-          element={user ? <Navigate to="/" /> :<Session/>} />
-					<Route 
-          exact
-          path="/home" 
-          element={user ? <Navigate to="/" /> :<Home />} />
+					<Route
+						exact
+						path="/session"
+						element={user ? <Navigate to="/" /> : <Session />}
+					/>
+					<Route
+						exact
+						path="/home"
+						element={user ? <Navigate to="/" /> : <Home />}
+					/>
 				</Routes>
 			</Router>
 		</div>

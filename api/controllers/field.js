@@ -43,7 +43,7 @@ export const getAllFields = async (req,res,next) =>{
     try{
         const fields = await Field.find()
         res.status(200).json(fields)
-    }catch{
+    }catch(err){
         res.status(500).json(err)
     }
 }

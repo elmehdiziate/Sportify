@@ -10,6 +10,7 @@ import rugbyGif from '../Assets/rugby.gif';
 
 
 export default function UpcomingGames(){
+
     return(
     <>
         <div className="upcoming-games scrollingDiv">

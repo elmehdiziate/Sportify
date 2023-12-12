@@ -1,18 +1,22 @@
 import React from "react";
 import './ProfileInformation.css';
-import defaultProfile from "../Assets/profile.png";
+import defaultProfile from "../Assets/profile.gif";
 import profileGif from "../Assets/user-profile.gif";
 
 export default function ProfileInformation(props){
-    let {firstName, lastName, profileImage, birthday} = props;
+    
+    const { userInfo1, userInfo2 } = props;
+    const {familyName, givenName } = userInfo1;
+    let {picture, isAdmin} = userInfo2;
 
-    if(profileImage === null)
-        profileImage = defaultProfile;
+    let beingadminn = "False";
 
+    if (isAdmin)
+        beingadminn = "True";
 
-    firstName = "Ayman";
-    lastName = "Ait Achour";
-    birthday = "22 Sept, 2002";
+    if (picture === null) {
+        picture = defaultProfile;
+    }
 
     return(
         <>
@@ -20,26 +24,26 @@ export default function ProfileInformation(props){
 
                 <div className="header">
                     <h5 className="title">Profile Information :</h5>
-                    <img className="profile-icon" src={profileGif } alt="icon" />
+                    <img className="profile-icon" src={profileGif} alt="icon" />
                 </div>
 
                 <div className="content">
-                    <img className="profile" src={defaultProfile}/>
+                    <img className="profile" src={picture} alt="profile"/>
                     
                     <div className="text-content">
                         <div className="information">
                             <p className="labels">First Name :</p>
-                            <p className="data">{firstName}</p>
+                            <p className="data">{givenName}</p>
                         </div>
 
                         <div className="information">
                             <p className="labels">Last Name :</p>
-                            <p className="data">{lastName}</p>
+                            <p className="data">{familyName}</p>
                         </div>
 
                         <div className="information">
-                            <p className="labels">Birthday :</p>
-                            <p className="data birthday">{birthday}</p>
+                            <p className="labels">Admin :</p>
+                            <p className="data admin">{beingadminn}</p>
                         </div>
                     </div>
                 </div>   
