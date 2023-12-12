@@ -60,10 +60,14 @@
     flex-direction: column;
 }
 
-.birthday {
-    margin-left: 45px;
+.admin {
+    margin-left: 63px;
 }
 
 .profile-icon {
     width: 50px;
+}
+
+p {
+    text-transform: capitalize;
 }
