@@ -54,7 +54,7 @@ app.use(passport.session()); // This should come after cookie-session
 app.use(
 	cors({
 		origin: "http://localhost:3000",
-		methods: "GET,POST,PUT,DELETE",
+		methods: "GET,POST,PUT,DELETE,PATCH",
 		credentials: true,
 	})
 );

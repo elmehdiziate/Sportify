@@ -52,31 +52,14 @@ export const createBooking = async (req, res) => {
 
 
 export const updateBooking = async (req, res) => {
-    try {
-        const booking = await Booking.findById(req.params.id);
-        if (req.body.field != null) {
-            booking.field = req.body.field;
-        }
-        if (req.body.user != null) {
-            booking.user = req.body.user;
-        }
-        if (req.body.date != null) {
-            booking.date = req.body.date;
-        }
-        if (req.body.starttime != null) {
-            booking.starttime = req.body.starttime;
-        }
-        if (req.body.endtime != null) {
-            booking.endtime = req.body.endtime;
-        }
-        if (req.body.status != null) {
-            booking.status = req.body.status;
-        }
-        const updatedBooking = await booking.save();
+    try{
+        const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, {$set: req.body}, { new: true });
         res.json(updatedBooking);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
     }
+    catch(error){
+        res.status(500).json({ message: error.message });
+    }
+    
 };
 
 export const deleteBooking = async (req, res) => {

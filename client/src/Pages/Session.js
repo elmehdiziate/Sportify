@@ -13,6 +13,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import NavBar from "../Components/NavBar";
 import '../styles/Session.css'; // Import the CSS file
+import jsPDF from 'jspdf';
+
+
 
 function Session() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -97,6 +100,80 @@ function Session() {
         setCurrentIndex(null); // Reset the current index
     };
 
+    const handleConfirm = async () => {
+        if (currentIndex !== null) {
+            const bookingId = rows[currentIndex].id; // Get the booking ID
+            try {
+                // Update the booking on the server
+                console.log(bookingId);
+                await axios.patch(`http://localhost:8000/booking/${bookingId}`, { status: 'Confirmed' });
+    
+                // Update the booking status locally
+                const updatedRows = rows.map((row, index) => {
+                    if (index === currentIndex) {
+                        return { ...row, status: 'Confirmed' };
+                    }
+                    return row;
+                });
+                const booking = await axios.get(`http://localhost:8000/booking/${bookingId}`);
+
+                console.log(booking.data.field);
+
+                const field = await axios.get(`http://localhost:8000/fields/${booking.data.field}`);
+                console.log(booking.data.user)
+                const User_Id = booking.data.user;
+                const user = await axios.get(`http://localhost:8000/users/${User_Id}`);
+                if(field.data.sport.toUpperCase() === "SOCCER"){
+                    await axios.patch(`http://localhost:8000/users/${booking.data.user}`, {soccerGames: user.data.soccerGames + 1});
+                }
+                else if(field.data.sport.toUpperCase() === "BASKETBALL"){
+                    await axios.patch(`http://localhost:8000/users/${booking.data.user}`, {basketballGames: user.data.basketballGames + 1});
+                }
+                else if(field.data.sport.toUpperCase() === "TENNIS"){
+                    await axios.patch(`http://localhost:8000/users/${booking.data.user}`, {tennisGames: user.data.tennisGames + 1});
+                }
+                else {
+                    await axios.patch(`http://localhost:8000/users/${booking.data.user}`, {rugbyGames: user.data.rugbyGames + 1});
+                }            
+                // Create PDF document
+                const doc = new jsPDF();
+
+                // Set font size and style
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+
+                // Set header properties
+                doc.setTextColor(40, 40, 40); // Text color: dark gray
+                doc.setFontSize(18);
+                doc.text('Confirmation', doc.internal.pageSize.width / 2, 10, 'center'); // Centered header
+
+                // Reset text properties
+                doc.setTextColor(0, 0, 0); // Reset text color
+                doc.setFontSize(12);
+
+                // Add content
+                doc.text(`Booking ID: ${bookingId}`, 10, 30);
+                doc.text(`User: ${user.data.username}`, 10, 40);
+                doc.text(`Field: ${field.data.name}`, 10, 50);
+                doc.text(`Sport: ${field.data.sport}`, 10, 60);
+                doc.text(`Date: ${booking.data.date.split('T')[0]}`, 10, 70);
+                doc.text(`Start Time: ${booking.data.starttime}`, 10, 80);
+                doc.text(`End Time: ${booking.data.endtime}`, 10, 90);
+                doc.text(`Status: Confirmed`, 10, 100);
+
+
+                // Trigger download
+                doc.save('booking-confirmation.pdf');
+
+                setRows(updatedRows);
+            } catch (error) {
+                console.error("Error confirming booking:", error);
+                // Handle error appropriately
+            }
+        }
+        handleClose();
+    };
+
     return (
         <div className="pageLayout">
             <div className="navBar">
@@ -136,7 +213,7 @@ function Session() {
                                                 onClose={handleClose}
                                             >
                                                 <MenuItem onClick={handleDelete}>Cancel Session</MenuItem>
-                                                <MenuItem onClick={handleClose}>Confirm Session</MenuItem>
+                                                <MenuItem onClick={handleConfirm}>Confirm Session</MenuItem>
                                             </Menu>
                                         </TableCell>
                                         <TableCell className="tableCell">{row.id}</TableCell>
