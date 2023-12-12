@@ -6,11 +6,12 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "../styles/Booking.css";
 import AddBookingModel from "../Components/AddBookingModal";
+import axios from 'axios';
 
 export default function Booking() {
 
 	const [open, setOpen] = useState(false);
-
+	const [events, setEvents] = useState([{}]);
 
 	const handleDateSelect = (selectInfo) => {
 		setOpen(true);
@@ -44,7 +45,19 @@ export default function Booking() {
 		);
 	}
 
+	const getEvents = async () => {
+		try {
+			const response = await axios.get("http://localhost:8000/booking");
+			const jsonData = await response.data;
+			setEvents([jsonData]);
+			
+		} catch (err) {
+			console.error(err.message);
+		}
+	}
+
 	useEffect(() => {
+		getEvents();
 	}, []);
 
 	const handleSuccess = () => {
@@ -75,6 +88,7 @@ export default function Booking() {
 					selectMirror={true}
 					dayMaxEvents={true}
 					weekends={true}
+					// initialEvents={events}
 					select={handleDateSelect}
 					eventContent={renderEventContent}
 					eventClick={handleEventClick}
