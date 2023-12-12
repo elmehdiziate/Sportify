@@ -33,9 +33,9 @@ export default function AddBookingModel({
 	const [fields, setFields] = useState([]);
 	const [user, setUser] = useState();
 	const [status, setStatus] = useState();
+	const [date, setDate] = useState();
 	const [starttime, setStarttime] = useState();
 	const [endtime, setEndtime] = useState();
-	const [date, setDate] = useState();
 	const [players, setPlayers] = useState(0);
 	const [teamName, setTeamName] = useState("");
 	//   const [submit, setSubmit] = useState(false);
@@ -49,8 +49,8 @@ export default function AddBookingModel({
 		setUser();
 		setEndtime();
 		setStarttime();
-		setDate();
 		setStatus();
+		setDate();
 		setPlayers(0);
 		setTeamName("");
 		setField("");
@@ -88,15 +88,15 @@ export default function AddBookingModel({
 				user: userId,
 				field: field,
 				status: "Pending",
-				starttime: starttime.toISOString(),
-				endtime: endtime.toISOString(),
-				date: date.toISOString(),
+				date: date.toISOString().replace(/T.*$/, ""),
+				starttime: date.toISOString().replace(/T.*$/, "") + "T" + starttime.toISOString().split("T")[1],
+				endtime: date.toISOString().replace(/T.*$/, "") + "T" + endtime.toISOString().split("T")[1],
 				teamName,
 				players,
 
 			};
 			console.log(userrequest);
-			console.log(body);
+			console.log('bodyyyyyyyy', body);
 			const responce = await axios.post("http://localhost:8000/booking", body);
 			console.log(responce);
 			handleSuccess();
@@ -128,7 +128,7 @@ export default function AddBookingModel({
 							setTeamName(e.target.value);
 						}}
 					/>
-					<br></br>
+					<br/>
 					<TextField
 						id="outlined-basic"
 						label="Number of Players"
@@ -139,13 +139,14 @@ export default function AddBookingModel({
 							setPlayers(e.target.value);
 						}}
 					/>
-					<br></br>
+					<br />
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
 						<DateField
 							label="Date"
 							value={date}
-							onChange={(value) => setDate(value)}
-							format="MM-DD-YYYY"
+							onChange={(date) => {
+								setDate(date);
+							}}
 						/>
 					</LocalizationProvider>
 
@@ -167,23 +168,16 @@ export default function AddBookingModel({
 						<TimeField
 							label="End Time"
 							value={endtime}
+							ampm={false}
+							masks={{ hours: "HH", minutes: "mm" }}
 							onChange={(value) => {
 								setEndtime(value);
 							}}
 						/>
 					</LocalizationProvider>
-					<br />
-					{/* <TextField
-						id="outlined-basic"
-						label="End Time"
-						variant="outlined"
-						value={endtime}
-						onChange={(e) => {
-							setEndtime(e);
-						}}
-					/> */}
 
-					<br></br>
+
+					<br/>
 
 					<div className="ModalButtons">
 						<Button
