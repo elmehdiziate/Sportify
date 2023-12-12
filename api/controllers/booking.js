@@ -101,4 +101,13 @@ export const getBookingsByUser = async (req, res) => {
     }
 }
 
+export const getBookingsByField = async (req, res) => {
+    try {
+        console.log(req.params.id);
+        const bookings = await Booking.find({ field: req.params.id });
+        res.json(bookings);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 

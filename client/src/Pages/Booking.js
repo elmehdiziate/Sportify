@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -6,10 +6,12 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "../styles/Booking.css";
 import AddBookingModel from "../Components/AddBookingModal";
-import axios from 'axios';
+import axios from "axios";
+import FilterFields from "../Components/FilterFields";
 
 export default function Booking() {
-
+	const [fields, setFields] = useState([]);
+	const [field, setField] = useState("");
 	const [open, setOpen] = useState(false);
 	const [events, setEvents] = useState([{}]);
 
@@ -17,23 +19,11 @@ export default function Booking() {
 		setOpen(true);
 		let calendarApi = selectInfo.view.calendar;
 
-		calendarApi.unselect(); // clear date selection
-
-		if (true) {
-			calendarApi.addEvent({
-				id: 1234,
-				start: selectInfo.startStr,
-				end: selectInfo.endStr,
-			});
-		}
+		calendarApi.unselect(); 
 	};
-
 
 	const handleEventClick = (clickInfo) => {
 		alert(clickInfo.event.title);
-	};
-	const handleEvents = (events) => {
-		console.log(events);
 	};
 
 	function renderEventContent(eventInfo) {
@@ -44,21 +34,50 @@ export default function Booking() {
 			</>
 		);
 	}
+	const handleEvents = (events) => {
+		console.log(events);
+	};
 
 	const getEvents = async () => {
 		try {
-			const response = await axios.get("http://localhost:8000/booking");
+			setTimeout(() => {}, 1000);
+
+			const response = await axios.get(`http://localhost:8000/booking/field/${field}`);
 			const jsonData = await response.data;
-			setEvents([jsonData]);
-			
+			console.log("json", jsonData);
+			const ev = await jsonData.map((event) => ({
+				id: event._id,
+				title: event.teamName,
+				start: event.starttime,
+				end: event.endtime,
+				status: event.status,
+			}));
+			setEvents(ev);
+			console.log("ev", [ev]);
+			await console.log("events", events);
 		} catch (err) {
 			console.error(err.message);
 		}
-	}
+	};
+
+	
+	const getField = async () => {
+		try {
+			const url = `http://localhost:8000/fields/`;
+			const { data } = await axios.get(url);
+			setFields(data);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+ 
+	 useEffect(() => {
+		 getField();
+	 }, []);
 
 	useEffect(() => {
 		getEvents();
-	}, []);
+	}, [field]);
 
 	const handleSuccess = () => {
 		setOpen(true);
@@ -67,6 +86,12 @@ export default function Booking() {
 	const handleError = (error) => {
 		console.log(error);
 	};
+	const handleFilter = async (Field) => {
+		setField(Field);
+		console.log(field);
+	};
+
+	
 
 	return (
 		<>
@@ -77,8 +102,14 @@ export default function Booking() {
 				open={open}
 				handleSubmit={setOpen}
 			/>
+			<div>
+
+			</div>
 			<div className="BookingCalendar">
-				
+			<FilterFields 
+				uniqueField={fields} onFilter={handleFilter}
+			/>
+			
 				<FullCalendar
 					plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 					className="fc"
@@ -88,11 +119,13 @@ export default function Booking() {
 					selectMirror={true}
 					dayMaxEvents={true}
 					weekends={true}
-					// initialEvents={events}
+					events={events}
 					select={handleDateSelect}
 					eventContent={renderEventContent}
 					eventClick={handleEventClick}
 					eventsSet={handleEvents}
+
+					
 					views={{
 						timeGridWeek: {
 							allDaySlot: false,
