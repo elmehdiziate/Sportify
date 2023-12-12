@@ -30,28 +30,28 @@ export default function SlideShow(){
                         <img src={soccerField} className="d-block w-100 slideshowimage" alt="Soccer Fields" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5 className="fieldtype">Soccer</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                    
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src={basketballField} className="d-block w-100 slideshowimage" alt="Basketball Fields"/>
                         <div className="carousel-caption d-none d-md-block">
                             <h5 className="fieldtype">Basketball</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                            
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src={tennisField} className="d-block w-100 slideshowimage" alt="Tennis Fields"/>
                         <div className="carousel-caption d-none d-md-block">
                             <h5 className="fieldtype">Tennis</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                            
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src={rugbyField} class="d-block w-100 slideshowimage" alt="Rugby Fields"/>
                         <div className="carousel-caption d-none d-md-block">
                             <h5 className="fieldtype">Rugby</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                        
                         </div>
                     </div>
     
