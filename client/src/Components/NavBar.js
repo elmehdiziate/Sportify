@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../styles/NavBar.css";
 import { IconContext } from "react-icons";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from "@mui/material";
+import axios  from "axios";
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 
 function NavBar() {
   const Navigate = useNavigate();
+  const [user, setUser] = useState({});
   const handleLogOut = async () => {
     // Make an HTTP request to the logout endpoint
     try {
@@ -18,6 +21,21 @@ function NavBar() {
       console.error('Logout failed:', error);
     }
   };
+  
+  const getUser = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/auth/login/success", {withCredentials: true});
+      console.log("data");
+      console.log(res);
+      setUser(res.data.user);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  useEffect(() => {
+    getUser();
+  }, [user]);
   
   return (
     <>
@@ -38,6 +56,17 @@ function NavBar() {
                 </li>
               );
             })}
+            {
+              user.isAdmin ? (
+                <li className="nav-text">
+                  <Link to="/fields">
+                  <SportsSoccerIcon color="white" />,
+                    <span>Fields</span>
+                  </Link>
+                </li>
+              ) : null
+
+            }
 
             <li className="button">
             <Button onClick={handleLogOut} style={{ color: "#ffffff" }}>

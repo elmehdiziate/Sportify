@@ -4,6 +4,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
+import Fab from '@mui/material/Fab';
+import Box from '@mui/material/Box';
+import AddIcon from '@mui/icons-material/Add';
+import AddFieldModel from "../Components/AddFieldModel"
 import {
 	StyledTable,
 	StyledTableCell,
@@ -33,6 +37,7 @@ const TableHeaders = [
 
 function Fields() {
 	const [rows, setRows] = useState([]);
+	const [open, setOpen] = useState(false);
 	const [filteredRows, setFilteredRows] = useState(rows);	
 	const [selectedSport, setSelectedSport] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
@@ -63,6 +68,18 @@ function Fields() {
 		  return matchesSport;
 		});
 		setFilteredRows(filteredData);
+	};
+
+	const handleSuccess = () => {
+		setOpen(true);
+	};
+
+	const handleError = (error) => {
+		console.log(error);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
 	};
 
 	const handleSearch = (event) => {
@@ -108,12 +125,22 @@ function Fields() {
 							<StyledTableCell align="right">{row.description}</StyledTableCell>
 							<StyledTableCell align="right">{row.bookingInfo.contactEmail}</StyledTableCell>
 							<StyledTableCell align="right">{row.rating}</StyledTableCell>
-							
 						</StyledTableRow>
 						  ))} 
 					</TableBody>
 				</StyledTable>
 			</StyledTableContainerAc>
+			<Box onClick={() => setOpen(true)}>
+  				<Fab color="primary" aria-label="add">
+    				<AddIcon />
+  				</Fab>
+			</Box>
+			<AddFieldModel 
+				handleSuccess={handleSuccess}
+				handleClose={setOpen}
+				open={open}
+				handleSubmit={setOpen}>
+			</AddFieldModel>
 		</div>
 		</>
 	);

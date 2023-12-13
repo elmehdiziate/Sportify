@@ -30,3 +30,13 @@
     font-size: 3rem;
     margin-left: 38vh;
 }
+
+.fab-bottom-left {
+    position: fixed;   /* Fixed position relative to the viewport */
+    display: flex;
+    justify-content: flex-end;
+    background-color: black !important; /* Black background */
+    color: white !important; /* White text color */
+}
+
+  
