@@ -21,3 +21,8 @@
 .flip-horizontally {
     transform: scaleX(-1);
 }
+
+.sleep {
+    width: 200px;
+    height: 200px;
+}

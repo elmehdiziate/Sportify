@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './UpcomingGames.css';
 import futurGif from '../Assets/past.gif';
+import sleepGif from '../Assets/sleep.gif';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GameInformation from "../Game Information/GameInformation";
 import axios from "axios";
@@ -23,19 +24,37 @@ export default function UpcomingGames(props){
     fetchData();
 }, [userID]);
     
-    return(
-    <>
-        <div className="upcoming-games scrollingDiv">
-            <div className="header">
-                <h5 className="title">Upcoming Game(s) :</h5>
-                <img className="upcoming-games-icon flip-horizontally" src={futurGif} alt="icon"/>
-            </div>
-            <hr className="new-line"/>
+    if(filteredData.length != 0){
+        return(
+            <>
+                <div className="upcoming-games scrollingDiv">
+                    <div className="header">
+                        <h5 className="title">Upcoming Game(s) :</h5>
+                        <img className="upcoming-games-icon" src={futurGif} alt="icon"/>
+                    </div>
+                    <hr className="new-line"/>
+        
+                    {filteredData.map((game) => {
+                        return <GameInformation game={game} />
+                    })}
+                </div>
+            </>
+            );
+    }
+    else{
+        return<>
 
-            {filteredData.map((game) => {
-                return <GameInformation game={game} />
-            })}
-        </div>
-    </>
-    );
+                <div className="upcoming-games scrollingDiv">
+                    <div className="header">
+                        <h5 className="title">Upcoming Game(s) :</h5>
+                        <img className="upcoming-games-icon" src={futurGif} alt="icon"/>
+                    </div>
+                    <hr className="new-line"/>
+                    <div className="sleepIcon">
+                        <img src={sleepGif} className="sleep"/>
+                    </div>
+                
+                </div>
+        </>
+    }
 }
