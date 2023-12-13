@@ -38,6 +38,7 @@ function NavBar() {
                 </li>
               );
             })}
+
             <li className="button">
             <Button onClick={handleLogOut} style={{ color: "#ffffff" }}>
 							<LogoutIcon color="white" />

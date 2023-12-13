@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 250px auto;
     grid-template-rows: 100vh 35vh;
-    background-color: whitesmoke
+    background-color: whitesmoke;
 }
 
 .home-content {

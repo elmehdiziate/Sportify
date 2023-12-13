@@ -21,11 +21,27 @@ const UserSchema = new mongoose.Schema({
   },
   picture: {
     type: String,
-    default: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+    default: null,
   },
   isAdmin: {
     type: Boolean,
     default: false,
+  },
+  soccerGames:{
+    type: Number,
+    default: 0,
+  },
+  basketballGames:{
+    type: Number,
+    default: 0,
+  },
+  tennisGames:{
+    type: Number,
+    default: 0,
+  },
+  rugbyGames:{
+    type: Number,
+    default: 0,
   },
 });
 UserSchema.statics.findOrCreate = async function (profile) {

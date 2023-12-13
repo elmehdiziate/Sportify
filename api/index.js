@@ -53,11 +53,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // This should come after cookie-session
 
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
+	cors({
+		origin: "http://localhost:3000",
+		methods: "GET,POST,PUT,DELETE,PATCH",
+		credentials: true,
+	})
 );
 
 app.use(express.json());
