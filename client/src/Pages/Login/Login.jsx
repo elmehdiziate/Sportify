@@ -26,7 +26,7 @@ function Login() {
 					<Button
 						variant="contained"
 						onClick={googleAuth}
-						style={{ background: '#3d3d7c' }}
+						style={{ background: '#0b0b15' }}
 						
 					>
 						<img src="./images/google.png" alt="google icon" className='img'/>

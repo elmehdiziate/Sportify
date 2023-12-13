@@ -40,7 +40,7 @@
 
 /* Refined styles for the FullCalendar header */
 .BookingCalendar .fc-toolbar {
-    background:  #3d3d7c;
+    background:  #d8b131;
     color: #fff;
     padding: 15px; /* Increased padding for a spacious feel */
     border-radius: 10px 10px 0 0; /* Rounded corners at the top */
@@ -48,7 +48,7 @@
 
 .BookingCalendar .fc-toolbar .fc-button {
     background-color: #ffffff;
-    color: #667eea;
+    color: #d8b131;
     border: none;
     border-radius: 5px;
     padding: 10px 15px; /* Increased padding for better touch targets */
@@ -85,7 +85,7 @@
 }
 
 .BookingCalendar .fc-col-header-cell {
-    background: #3d3d7c;
+    background: #d8b131;
     color: #000000;
     border: none;
     font-family: 'Roboto', sans-serif;
