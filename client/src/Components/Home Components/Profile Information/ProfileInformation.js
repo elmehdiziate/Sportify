@@ -9,6 +9,8 @@ export default function ProfileInformation(props){
     const {familyName, givenName } = userInfo1;
     let {picture, isAdmin} = userInfo2;
 
+    console.log(picture);
+
     let beingadminn = "False";
 
     if (isAdmin)
@@ -28,7 +30,7 @@ export default function ProfileInformation(props){
                 </div>
 
                 <div className="content">
-                    <img className="profile" src={picture} alt="profile"/>
+                    <img className="profile" src={picture} alt="a"/>
                     
                     <div className="text-content">
                         <div className="information">

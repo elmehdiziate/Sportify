@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import NavBar from "../Components/NavBar";
 import '../styles/Session.css'; // Import the CSS file
 
+
 function Session() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [rows, setRows] = useState([]);
