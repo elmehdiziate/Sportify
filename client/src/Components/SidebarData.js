@@ -14,12 +14,6 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Fields",
-    path: "/fields",
-    icon: <SportsSoccerIcon color="white" />,
-    cName: "nav-text",
-  },
-  {
     title: "booking",
     path: "/booking",
     icon: <BookmarkAddIcon color="white" />,

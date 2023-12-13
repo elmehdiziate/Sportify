@@ -5,7 +5,7 @@ export const createField = async (req,res,next)=>{
     try{
         const savedField = await newField.save()
         res.status(200).json(savedField)
-    }catch{
+    }catch (err){
         res.status(500).json(err)
     }
 }
@@ -15,7 +15,7 @@ export const updateField = async (req,res) =>{
     try{
         const updatedField = await Field.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
         res.status(200).json(updatedField)
-    }catch{
+    }catch (err){
         res.status(500).json(err)
     }
 }

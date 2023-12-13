@@ -94,7 +94,6 @@ function Session() {
         }
         handleClose();
     };
-    
 
     const handleClose = () => {
         setAnchorEl(null);
