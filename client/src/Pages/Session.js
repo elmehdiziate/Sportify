@@ -106,7 +106,7 @@ function Session() {
             try {
                 // Update the booking on the server
                 console.log(bookingId);
-                await axios.patch(`http://localhost:8000/booking/${bookingId}`, { status: 'Confirmed' });
+                await axios.patch(`http://localhost:8000/booking/${bookingId}`, { status: 'Approved' });
     
                 // Update the booking status locally
                 const updatedRows = rows.map((row, index) => {
